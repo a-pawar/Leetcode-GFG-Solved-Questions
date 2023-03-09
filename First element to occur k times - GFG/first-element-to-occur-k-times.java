@@ -30,8 +30,10 @@ class Solution
         int [] freq = new int [10001];
         for(int i : a){
             freq[i]++;
-            if(freq[i]==k)
+            if(freq[i]==k){
                 return i;
+            }
+                
         }  return -1;  
     } 
 }
