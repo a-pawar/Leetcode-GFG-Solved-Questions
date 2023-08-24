@@ -8,9 +8,9 @@ class Solution {
                 min = prices[i];
             }
             else if(prices[i]>min){
-                int curProfit = prices[i]-min;
-                if(curProfit>profit){
-                    profit=curProfit;
+                 
+                if(prices[i]-min>profit){
+                    profit=prices[i]-min;
                 }
             }
         }
