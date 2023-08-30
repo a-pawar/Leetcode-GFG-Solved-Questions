@@ -22,7 +22,7 @@ class Solution {
                }
                else{
                    //sum is 0
-                   List<Integer> innerList = new ArrayList<>();
+                   List<Integer> innerList = new ArrayList<>(3);
                     innerList.add(nums[i]);
                     innerList.add(nums[j]);
                     innerList.add(nums[k]);
