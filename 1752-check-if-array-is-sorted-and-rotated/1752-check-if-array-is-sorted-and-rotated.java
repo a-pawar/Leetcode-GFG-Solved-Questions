@@ -15,7 +15,7 @@ class Solution {
             if( count>=2){
                 return false;
             }
-            if(pivotIndex!=i && count==1 && store<nums[i] ){
+            if( count==1 && store<nums[i] ){
                 return false;
             }
         }
