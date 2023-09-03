@@ -17,7 +17,6 @@ class Solution {
         // }
     //approach2-reverse the whole array then reverse the first k elemnt and then reverse after k element  o()
         k = k%nums.length;
-        int s =0, e = nums.length-1;
         //rotate all element 
         rotateArray(nums,0,nums.length-1);
         //rotate first k element
