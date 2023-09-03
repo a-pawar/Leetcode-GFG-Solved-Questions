@@ -16,15 +16,14 @@ class Solution {
         //    nums[i]=arr[i]; 
         // }
     //approach2-reverse the whole array then reverse the first k elemnt and then reverse after k element  o()
-        int n = nums.length;
-        k = k%n;
-        int s =0, e = n-1;
+        k = k%nums.length;
+        int s =0, e = nums.length-1;
         //rotate all element 
-        rotateArray(nums,0,n-1);
+        rotateArray(nums,0,nums.length-1);
         //rotate first k element
         rotateArray(nums,0,k-1);
         //rotate elements after k
-        rotateArray(nums,k,n-1);
+        rotateArray(nums,k,nums.length-1);
     }
     public void rotateArray(int nums[],int s,int e){
         while(s<e){
