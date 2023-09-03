@@ -15,10 +15,18 @@ class Solution {
         // for(int i=0;i<k;i++){
         //    nums[i]=arr[i]; 
         // }
-    //approach2-reverse the whole array then reverse the first k elemnt and then reverse after k element 
+    //approach2-reverse the whole array then reverse the first k elemnt and then reverse after k element  o()
         int n = nums.length;
         k = k%n;
         int s =0, e = n-1;
+        //rotate all element 
+        rotateArray(nums,0,n-1);
+        //rotate first k element
+        rotateArray(nums,0,k-1);
+        //rotate elements after k
+        rotateArray(nums,k,n-1);
+    }
+    public void rotateArray(int nums[],int s,int e){
         while(s<e){
             int temp = nums[s];
             nums[s] = nums[e];
@@ -26,26 +34,5 @@ class Solution {
             s++;
             e--;
         }
-        s=0;
-        e=k-1;
-        while(s<e){
-            int temp = nums[s];
-            nums[s] = nums[e];
-            nums[e] = temp;
-            s++;
-            e--;
-        }
-        s=k;
-        e=n-1;
-        while(s<e){
-            int temp = nums[s];
-            nums[s] = nums[e];
-            nums[e] = temp;
-            s++;
-            e--;
-        }
-
-
-
     }
 }
