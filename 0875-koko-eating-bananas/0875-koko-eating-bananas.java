@@ -7,7 +7,7 @@ class Solution {
              int totalHours=calculateTotalHours(piles,mid);
             if(totalHours<=h){
                 end = mid-1;
-            }else if(totalHours>h){
+            }else{
                 start=mid+1;
             }
         }
