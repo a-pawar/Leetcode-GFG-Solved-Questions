@@ -1,7 +1,10 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
         
-        int start=1,end=findMax(piles),mid=0;
+        int start=1;
+        // int end=findMax(piles);
+        int end=1000000000;
+            int mid=0;
         while(start<=end){
              mid = (end-start)/2+start;
              int totalHours=calculateTotalHours(piles,mid);
