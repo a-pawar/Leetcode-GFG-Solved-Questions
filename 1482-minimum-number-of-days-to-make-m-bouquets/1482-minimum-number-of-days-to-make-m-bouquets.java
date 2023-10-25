@@ -1,9 +1,7 @@
 class Solution {
     public int minDays(int[] bloomDay, int m, int k) {
         long totalFlowerReq =(long) m*k;
-        System.out.println(totalFlowerReq);
         long maxFlowerGet = bloomDay.length;
-        System.out.print(maxFlowerGet);
         if(maxFlowerGet<totalFlowerReq){
             return -1;
         }
@@ -25,16 +23,14 @@ class Solution {
             for(int i=0;i<bloomDay.length;i++){
                 if(bloomDay[i]<=mid){
                     temp++;
-                    if(temp==k){
-                        bouquetsGet++;
-                        temp=0;
-                    }
-                    
                 }
                 else{
+                    bouquetsGet+=temp/k;
                     temp=0;
                 }    
             }
+            bouquetsGet+=temp/k;
+
             if(m<=bouquetsGet){
                 end = mid-1;
             }else{
@@ -43,4 +39,5 @@ class Solution {
         }
         return start; 
     }
+    
 }
