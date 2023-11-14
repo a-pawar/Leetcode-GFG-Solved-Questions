@@ -1,33 +1,21 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
         Map<Character,Character> map = new HashMap<>();
-        Map<Character,Character> map1 = new HashMap<>();
-        
-        map.put(s.charAt(0),t.charAt(0));
-        map1.put(t.charAt(0),s.charAt(0));
-        for(int i=1;i<s.length();i++){
-            if(map.containsKey(s.charAt(i))){
-                char ch = map.get(s.charAt(i));
-                if(ch!=t.charAt(i)){
+        Set<Character> set = new HashSet<>();
+        //traverse s string
+        for(int i=0;i<s.length();i++){
+            //check map contain character at i in s string , if it contains it means we have mapped that character previously,so check with mapping
+            if(map.containsKey(s.charAt(i)) && map.get(s.charAt(i))!=t.charAt(i)){
                     return false;
-                }
             }
-            else{
-              map.put(s.charAt(i),t.charAt(i));  
+            //this case is for s="badc" t="baba" b alresdy map to b and d also try to map with b it is not allow
+            if(!map.containsKey(s.charAt(i)) && set.contains(t.charAt(i))){
+                return false;
             }
-            if(map1.containsKey(t.charAt(i))){
-                char ch = map1.get(t.charAt(i));
-                if(ch!=s.charAt(i)){
-                    return false;
-                }
-            }
-            else{
-              map1.put(t.charAt(i),s.charAt(i));  
-            }
+            //map character and add in set
+            map.put(s.charAt(i),t.charAt(i));
+            set.add(t.charAt(i));
         }
-        
-        
         return true;
-
     }
 }
