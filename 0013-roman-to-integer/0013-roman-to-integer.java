@@ -1,60 +1,22 @@
 class Solution {
     public int romanToInt(String s) {
-        int num=0;
+        int ans=0;
         int k=s.length();
-        String str="";
+        Map<Character,Integer> map = new HashMap<>();
+        map.put('I',1);
+        map.put('V',5);
+        map.put('X',10);
+        map.put('L',50);
+        map.put('C',100);
+        map.put('D',500);
+        map.put('M',1000);
         for(int i=0;i<k;i++){
-            if(i<k-1 ){
-                str=s.substring(i,i+2);
-                System.out.println(str);
+            if(i+1<k && map.get(s.charAt(i))<map.get(s.charAt(i+1))){
+                ans-=map.get(s.charAt(i));
+            }else{
+                ans+=map.get(s.charAt(i));
             }
-            if(str.equals("CM")){ //condition is to protect arrayindex out of obund
-                num = num+900;
-                i=i+1;
-            }
-            else if(str.equals("CD")){
-                num = num+400;
-                i=i+1;
-            }
-            else if(str.equals("XC")){
-                num = num+90;
-                i=i+1;
-            }
-            else if(str.equals("XL")){
-                num = num+40;
-                i=i+1;
-            }
-            else if(str.equals("IX")){ 
-                num = num+9;
-                i=i+1;
-            }
-            else if(str.equals("IV")){
-                num = num+4;
-                i=i+1;
-            }
-            else if(s.charAt(i)=='M'){
-                num = num+1000;
-            }
-            else if(s.charAt(i)=='D'){
-                num = num+500;
-            }
-            else if(s.charAt(i)=='C'){
-                num = num+100;
-            }
-            else if(s.charAt(i)=='L'){
-                num = num+50;
-            }
-            else if(s.charAt(i)=='X'){
-                num = num+10;
-            }
-            else if(s.charAt(i)=='V'){
-                num = num+5;
-            }
-            else if(s.charAt(i)=='I'){
-                num = num+1;
-            }
-            str="";
         }
-        return num;
+        return ans;
     }
 }
