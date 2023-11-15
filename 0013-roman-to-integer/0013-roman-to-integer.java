@@ -2,28 +2,33 @@ class Solution {
     public int romanToInt(String s) {
         int num=0;
         int k=s.length();
+        String str="";
         for(int i=0;i<k;i++){
-            if(i<k-1 && s.substring(i,i+2).equals("CM")){ //condition is to protect arrayindex out of obund
+            if(i<k-1 ){
+                str=s.substring(i,i+2);
+                System.out.println(str);
+            }
+            if(str.equals("CM")){ //condition is to protect arrayindex out of obund
                 num = num+900;
                 i=i+1;
             }
-            else if(i<k-1 && s.substring(i,i+2).equals("CD")){
+            else if(str.equals("CD")){
                 num = num+400;
                 i=i+1;
             }
-            else if(i<k-1 && s.substring(i,i+2).equals("XC")){
+            else if(str.equals("XC")){
                 num = num+90;
                 i=i+1;
             }
-            else if(i<k-1 && s.substring(i,i+2).equals("XL")){
+            else if(str.equals("XL")){
                 num = num+40;
                 i=i+1;
             }
-            else if(i<k-1 &&  s.substring(i,i+2).equals("IX")){ 
+            else if(str.equals("IX")){ 
                 num = num+9;
                 i=i+1;
             }
-            else if(i<k-1 && s.substring(i,i+2).equals("IV")){
+            else if(str.equals("IV")){
                 num = num+4;
                 i=i+1;
             }
@@ -48,6 +53,7 @@ class Solution {
             else if(s.charAt(i)=='I'){
                 num = num+1;
             }
+            str="";
         }
         return num;
     }
