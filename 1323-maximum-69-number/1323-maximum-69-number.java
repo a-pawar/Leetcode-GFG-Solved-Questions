@@ -14,7 +14,7 @@ class Solution {
         if(store==-1){
             return num;
         }
-        System.out.print(store);
+        
         int ans =(int) Math.pow(10,store)*3+num;
         return ans;
     }
