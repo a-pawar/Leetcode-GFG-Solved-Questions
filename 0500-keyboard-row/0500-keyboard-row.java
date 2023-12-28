@@ -27,12 +27,37 @@ class Solution {
         map.put('b',3);
         map.put('n',3);
         map.put('m',3);
+        map.put('Q',1);
+        map.put('W',1);
+        map.put('E',1);
+        map.put('R',1);
+        map.put('T',1);
+        map.put('Y',1);
+        map.put('U',1);
+        map.put('I',1);
+        map.put('O',1);
+        map.put('P',1);
+        map.put('A',2);
+        map.put('S',2);
+        map.put('D',2);
+        map.put('F',2);
+        map.put('G',2);
+        map.put('H',2);
+        map.put('J',2);
+        map.put('K',2);
+        map.put('L',2);
+        map.put('Z',3);
+        map.put('X',3);
+        map.put('C',3);
+        map.put('V',3);
+        map.put('B',3);
+        map.put('N',3);
+        map.put('M',3);
 
         boolean [] bool= new boolean[words.length];
         int index=0;
         for(int i=0;i<words.length;i++){
             String temp = words[i];
-            temp=temp.toLowerCase();
             
             int row = map.get(temp.charAt(0));
             int j=1;
