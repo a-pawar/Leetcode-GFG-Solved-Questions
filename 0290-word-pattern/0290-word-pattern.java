@@ -33,7 +33,6 @@ class Solution {
             }
 
         }
-        System.out.print(j);
         if(j-1!=s.length()){
             return false;
         }
