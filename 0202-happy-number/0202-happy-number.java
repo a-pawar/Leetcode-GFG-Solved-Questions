@@ -1,20 +1,25 @@
 class Solution {
     public boolean isHappy(int n) {
-        while(true){
-            int temp=n;
-            int sum=0;
-            while(temp>0){
-                int rem = temp%10;
-                sum = sum + rem*rem;
-                temp /=10;
-            }
-            n=sum;
-            if(sum==1){
-                return true;
-            }
-            if(sum!=7 &&sum<=9){
-                return false;
-            }
+        //since it has cycle we use slow and fast pointer approach
+        int slow = n;
+        int fast=n;
+        do{
+            slow = findSquare(slow);
+            fast = findSquare(findSquare(fast));
+            
+        }while(slow!=fast);
+        if(slow==1){
+            return true;
         }
+        return  false;
+    }
+    private int findSquare(int n){
+        int ans =0;
+        while(n>0){
+            int rem = n%10;
+            ans = ans+rem*rem;
+            n = n/10;
+        }
+        return ans;
     }
 }
