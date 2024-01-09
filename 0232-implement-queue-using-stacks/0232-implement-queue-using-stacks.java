@@ -1,61 +1,43 @@
 class MyQueue {
-    int []stk1;
-    int [] stk2;
-    int tos=-1;
+    Stack<Integer> stk1;
+    Stack<Integer> stk2;
+    
     public MyQueue() {
-        stk1=new int[101];
-        stk2=new int[101];
+        stk1=new Stack<>();
+        stk2=new Stack<>();
     }
     
     public void push(int x) {
-        tos++;
-        stk1[tos]=x;
+        
+        stk1.push(x);
     }
     
     public int pop() {
-        int temp = tos;
-        int i=0;
-        while(temp!=-1){
-            stk2[i]=stk1[temp];
-            temp--;
-            i++;
+        while(stk1.size()!=0){
+            stk2.push(stk1.pop());
         }
-        int remove = stk1[0];
-        tos--;
-        temp = tos;
-        i=0;
-        while(temp!=-1){
-            stk1[i]=stk2[temp];
-            temp--;
-            i++;
+        int remove = stk2.pop();
+        while(stk2.size()!=0){
+            stk1.push(stk2.pop());
         }
+     
         
         return remove;
     }
     
     public int peek() {
-        int temp = tos;
-        int i=0;
-        while(temp!=-1){
-            stk2[i]=stk1[temp];
-            temp--;
-            i++;
+        while(stk1.size()!=0){
+            stk2.push(stk1.pop());
         }
-        int peek = stk1[0];
-        
-        temp = tos;
-        i=0;
-        while(temp!=-1){
-            stk1[i]=stk2[temp];
-            temp--;
-            i++;
+        int peek = stk2.peek();
+        while(stk2.size()!=0){
+            stk1.push(stk2.pop());
         }
-        
         return peek;
     }
     
     public boolean empty() {
-        if(tos==-1){
+        if(stk1.isEmpty()){
             return true;
         }
         return false;
