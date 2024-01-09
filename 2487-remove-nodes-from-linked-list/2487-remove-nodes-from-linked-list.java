@@ -10,29 +10,35 @@
  */
 class Solution {
     public ListNode removeNodes(ListNode head) {
-        ListNode node =head;
-        Stack<Integer> stack = new Stack<>();
+        ListNode revHead = reverseList(head);
+        ListNode node = revHead.next,temp=revHead;
+        int max=revHead.val;
+        //first in rev (last) node is always included
         while(node!=null){
-            stack.push(node.val);
-            node = node.next;
+            if(node.val>=max){
+                max=node.val;
+                temp.next=node;
+                temp = node;
+            }
+            node=node.next;
         }
-        ListNode newHead=null;
-        int max=Integer.MIN_VALUE;
-        while(stack.size()!=0){
-            int top = stack.pop();
-            if(top>=max){
-                max=top;
-                ListNode newnode = new ListNode(top);
-                if(newHead==null){
-                    newHead=newnode;
-                }else{
-                    newnode.next = newHead;
-                    newHead=newnode;
-                }
+        temp.next=null;
+        ListNode newHead = reverseList(revHead);
+        return newHead;
+        
+    }
+    public ListNode reverseList(ListNode head){
+        ListNode node = head,prev=null,nextnode=head.next;
+        while(node!=null){
+            node.next = prev;
+            prev=node;
+            node = nextnode;
+            if(nextnode!=null){
+                nextnode = nextnode.next;
             }
             
         }
-        return newHead;
+        return prev;
         
     }
 }
