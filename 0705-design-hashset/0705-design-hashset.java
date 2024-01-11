@@ -1,12 +1,12 @@
 class MyHashSet {
     LinkedList<Integer> [] arr;
-    int m = 10000;//size of bucket
+    int m = 1000;//size of bucket
     public int hashing(int key){
         int index = key%m;
         return index;
     }
     public MyHashSet() {
-        arr = new LinkedList[10000];
+        arr = new LinkedList[1000];
         for(int i=0;i<arr.length;i++){
             arr[i]=new LinkedList<>();
         }
