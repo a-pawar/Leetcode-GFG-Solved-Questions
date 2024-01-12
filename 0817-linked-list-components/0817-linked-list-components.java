@@ -10,13 +10,16 @@
  */
 class Solution {
     public int numComponents(ListNode head, int[] nums) {
-        Arrays.sort(nums);
+        HashSet<Integer> set = new HashSet<>();
+        for(int i=0;i<nums.length;i++){
+            set.add(nums[i]);
+        }
         int ans = 0;
         boolean isconnected = false;
         ListNode node = head;
         while(node!=null){
             int val = node.val;
-            boolean isfound = search(nums,val);
+            boolean isfound = set.contains(val);
             if(isfound){
                 isconnected=true;
                 
