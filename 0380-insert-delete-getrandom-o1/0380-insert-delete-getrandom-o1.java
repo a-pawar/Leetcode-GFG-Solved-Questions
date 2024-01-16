@@ -25,7 +25,7 @@ class RandomizedSet {
         //random index
         double ran = Math.random()*list.size();
         int random =(int) ran;
-        random = random%list.size();
+        // random = random%list.size();
         return list.get(random);
     }
 }
