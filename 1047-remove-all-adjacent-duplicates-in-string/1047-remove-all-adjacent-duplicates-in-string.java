@@ -10,12 +10,12 @@ class Solution {
                 stack.push(ch);
             }
         }
-        String ans  ="";
+        StringBuilder ans  =new StringBuilder("");
         while(!stack.isEmpty()){
-            char ch = stack.pop();
-            ans=ch+ans;
+            ans.append(stack.pop());
         }
-        return ans;
+        ans.reverse();
+        return ans.toString();
 
     }
 }
