@@ -2,9 +2,7 @@ class Solution {
     public int climbStairs(int n) {
         return fibo(n);
     }
-    public int fibo(int n){
-       
-        
+    public int fibo(int n){ 
         int a=1;
         int b=1;
         int c=1;
