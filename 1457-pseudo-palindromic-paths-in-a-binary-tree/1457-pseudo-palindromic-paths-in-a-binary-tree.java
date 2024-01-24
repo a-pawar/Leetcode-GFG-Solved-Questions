@@ -16,32 +16,30 @@
 class Solution {
     public int pseudoPalindromicPaths (TreeNode root) {
         int[] arr= new int[10];
-        // ArrayList<Integer> list = new ArrayList<>();
         return pseudoPalindromicPathsHelper(root,arr);
     }
     public int pseudoPalindromicPathsHelper(TreeNode root,int [] arr){
         if(root.left==null && root.right==null){
             arr[root.val]=arr[root.val]+1;
             if(isPalindrome(arr)){
+                arr[root.val]=arr[root.val]-1;
                 return 1;
             }
+            arr[root.val]=arr[root.val]-1;
             return 0;
         }
-       // list.add(root.val);
         arr[root.val]=arr[root.val]+1;
         int leftAns=0,rightAns=0;
         if(root.left!=null){
-            // ArrayList<Integer> list1 =  new ArrayList<>();
-            // list1.addAll(list);
-            int[] arr1 = Arrays.copyOf(arr, 10);
-             leftAns = pseudoPalindromicPathsHelper(root.left,arr1);
+             leftAns = pseudoPalindromicPathsHelper(root.left,arr);
+            
         }
         if(root.right!=null){
-            // ArrayList<Integer> list2 =  new ArrayList<>();
-            // list2.addAll(list);
-            int[] arr2 = Arrays.copyOf(arr, 10);
-             rightAns = pseudoPalindromicPathsHelper(root.right,arr2);
+             rightAns = pseudoPalindromicPathsHelper(root.right,arr);
+            
         }
+        arr[root.val]=arr[root.val]-1;
+        
         return leftAns+rightAns;
     }
     public boolean isPalindrome(int [] arr){
