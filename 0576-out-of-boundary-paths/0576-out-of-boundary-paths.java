@@ -23,19 +23,19 @@ class Solution {
         }
         long ans1,ans2,ans3,ans4;
         //left
-             ans1 = findPathsHelper(m,n,maxMove-1,startRow,startColumn-1,dp) % 1000000007;
+             ans1 = findPathsHelper(m,n,maxMove-1,startRow,startColumn-1,dp) ;
        
         
         //right
-             ans2 = findPathsHelper(m,n,maxMove-1,startRow,startColumn+1,dp)% 1000000007;
+             ans2 = findPathsHelper(m,n,maxMove-1,startRow,startColumn+1,dp);
            
         
         //top
-            ans3 = findPathsHelper(m,n,maxMove-1,startRow-1,startColumn,dp)% 1000000007;
+            ans3 = findPathsHelper(m,n,maxMove-1,startRow-1,startColumn,dp);
            
          
         //down
-            ans4 = findPathsHelper(m,n,maxMove-1,startRow+1,startColumn,dp)% 1000000007;
+            ans4 = findPathsHelper(m,n,maxMove-1,startRow+1,startColumn,dp);
             
          
         long ans = (ans1 + ans2 + ans3 + ans4)% 1000000007 ;
