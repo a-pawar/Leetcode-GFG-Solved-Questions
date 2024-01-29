@@ -26,21 +26,19 @@ class MyQueue {
     }
     
     public int peek() {
-        while(stk1.size()!=0){
+        while(!stk1.isEmpty()){
             stk2.push(stk1.pop());
         }
         int peek = stk2.peek();
-        while(stk2.size()!=0){
+        while(!stk2.isEmpty()){
             stk1.push(stk2.pop());
         }
         return peek;
     }
     
     public boolean empty() {
-        if(stk1.isEmpty()){
-            return true;
-        }
-        return false;
+        return stk1.isEmpty();
+           
     }
 }
 
