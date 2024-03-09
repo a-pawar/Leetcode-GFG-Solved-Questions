@@ -5,14 +5,13 @@ class Solution {
     }
     private int catalan(int n)
     {
-        int res = 0;
- 
-        if (n <= 1) {
-            return 1;
+        long res = 1;
+        // Iterate till N
+        for (int i = 1; i <= n; i++) {
+            // Calculate the ith Catalan Number
+            res = (res * (4 * i - 2)) / (i + 1);
+            
         }
-        for (int i = 0; i < n; i++) {
-            res += catalan(i) * catalan(n - i - 1);
-        }
-        return res;
+        return (int)res;
     }
 }
