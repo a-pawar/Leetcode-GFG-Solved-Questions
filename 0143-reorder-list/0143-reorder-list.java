@@ -10,44 +10,53 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
-        ListNode mid=getMid(head);
-        ListNode secondHead=mid.next;
-        mid.next=null;
-        //reverse second half
-        ListNode reverseSecondHead=reverseLL(secondHead);
+        if(head == null || head.next==null){
+            return;
+        }
+        int count = 0;
         ListNode node = head;
-        while(node!=null && node.next!=null &&reverseSecondHead!=null){
-            ListNode store=node.next;
-            node.next=reverseSecondHead;
-            reverseSecondHead=reverseSecondHead.next;
-            node=node.next;
-            node.next=store;
+        while(node!=null){
+            count++;
+            node = node.next;
+        }
+        if(count%2 != 0){
+            count = count+1; 
+        }
+        count = count/2;
+        node = head;
+        for(int i=1;i<count;i++){
             node=node.next;
         }
-       
-        
+        ListNode revNode = reverse(node.next);
+        node.next = null;
+        ListNode l1 = head;
+        ListNode l2 = revNode;
+
+        while(l2!=null){
+            ListNode temp = l1.next;
+            l1.next = l2;
+            ListNode temp1 = l2.next;
+            l2.next = temp;
+            l2 = temp1;
+            if(l1.next!=null){
+                l1 = l1.next.next;
+            }
+        }
+        head = l1;
+
     }
-    public ListNode reverseLL(ListNode head){
+    public ListNode reverse(ListNode head){
         if(head==null || head.next==null){
             return head;
         }
-        ListNode prev=null,curr=head,nextnode=head.next;
-        while(curr!=null){
-            curr.next=prev;
-            prev=curr;
-            curr=nextnode ;
-            if(nextnode!=null){
-                nextnode = nextnode.next;
-            }   
+        ListNode prev = null;
+        while(head!=null){
+            ListNode temp = head.next;
+            head.next = prev;
+            prev=head;
+            head = temp;
         }
         return prev;
-    }
-    public ListNode getMid(ListNode head){
-        ListNode slow=head,fast=head;
-        while(fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
-        }
-        return slow;
+
     }
 }
