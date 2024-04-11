@@ -22,19 +22,18 @@ class Solution {
             stack.pop();
             k--;
         }
-        StringBuilder ans=new StringBuilder();
+        String ans="";
         while(!stack.isEmpty()){
             int i = stack.pop();
-            ans.insert(0,Integer.toString(i));
-            // ans=Integer.toString(i)+ans;
+            ans=Integer.toString(i)+ans;
         }
         
         while(ans.length()>0 && ans.charAt(0)=='0'){
-           ans.delete(0,1);
+            ans=ans.substring(1);
         }
         if(ans.length()==0){
             return "0";
         }
-        return ans.toString();
+        return ans;
     }
 }
